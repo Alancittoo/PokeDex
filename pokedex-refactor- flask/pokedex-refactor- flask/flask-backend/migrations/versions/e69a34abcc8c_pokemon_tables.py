@@ -1,8 +1,8 @@
-"""please work
+"""pokemon tables
 
-Revision ID: 4fa672842f4d
+Revision ID: e69a34abcc8c
 Revises: 
-Create Date: 2023-05-04 13:11:50.143572
+Create Date: 2023-05-04 15:04:30.423981
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '4fa672842f4d'
+revision = 'e69a34abcc8c'
 down_revision = None
 branch_labels = None
 depends_on = None
