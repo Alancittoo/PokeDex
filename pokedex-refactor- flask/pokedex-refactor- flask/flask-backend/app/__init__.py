@@ -1,9 +1,13 @@
 import os
 from flask import Flask
+from flask_migrate import Migrate
 from app.config import Configuration
+from .models import db, Pokemon, Item
 
 app = Flask(__name__)
 app.config.from_object(Configuration)
+db.init_app(app)
+migrate = Migrate(app, db)
 
 # import statement for CSRF
 from flask_wtf.csrf import CSRFProtect, generate_csrf
