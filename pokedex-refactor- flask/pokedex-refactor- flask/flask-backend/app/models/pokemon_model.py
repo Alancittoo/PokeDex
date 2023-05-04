@@ -1,4 +1,5 @@
 from .db import db
+from flask import url_for
 
 UNKNOWN_IMG_URL = "/images/unknown.png"
 
@@ -27,7 +28,7 @@ class Pokemon(db.Model):
             "number": self.number,
             "attack": self.attack,
             "defense": self.defense,
-            "imageUrl": self.image_url,
+            "imageUrl": url_for("static", filename = self.image_url),
             "name": self.name,
             "type": self.type,
             "moves": self.moves.split(","),
@@ -43,7 +44,7 @@ class Pokemon(db.Model):
             "number": self.number,
             "attack": self.attack,
             "defense": self.defense,
-            "imageUrl": self.image_url,
+            "imageUrl": url_for("static", filename = self.image_url),
             "name": self.name,
             "type": self.type,
             "moves": self.moves.split(","),

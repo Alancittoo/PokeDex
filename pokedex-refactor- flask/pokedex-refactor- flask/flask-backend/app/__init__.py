@@ -4,12 +4,12 @@ from flask_migrate import Migrate
 from app.config import Configuration
 from .models import db
 from .routes.pokemon import pokemon
-# from routes.orders import orders ## import order routes
+from .routes.items import item ## import order routes
 
 app = Flask(__name__)
 app.config.from_object(Configuration)
 app.register_blueprint(pokemon, url_prefix="/api/pokemon") ## connects route to app
-# app.register_blueprint(orders, url_prefix="/orders") ## connects route to app
+app.register_blueprint(item, url_prefix="/api/item") ## connects route to app
 
 db.init_app(app)
 migrate = Migrate(app, db)

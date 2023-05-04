@@ -1,4 +1,5 @@
 from .db import db
+from flask import url_for
 
 class Item(db.Model):
     __tablename__ = 'items'
@@ -17,7 +18,7 @@ class Item(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "imageUrl": self.image_url,
+            "imageUrl": url_for("static", filename = self.image_url),
             "happiness": self.happiness,
             "name": self.name,
             "price": self.price,
