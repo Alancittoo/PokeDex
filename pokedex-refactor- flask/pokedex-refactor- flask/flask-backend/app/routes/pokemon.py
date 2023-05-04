@@ -1,5 +1,6 @@
 from flask import Blueprint, redirect ## imports Blueprint + etcprice
 from ..models import Pokemon, Item
+from random import choice
 pokemon = Blueprint("pokemon", __name__)
 
 @pokemon.route("")
