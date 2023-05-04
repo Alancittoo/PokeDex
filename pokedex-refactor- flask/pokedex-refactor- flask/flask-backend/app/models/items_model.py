@@ -1,6 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from .db import db
 
 class Item(db.Model):
     __tablename__ = 'items'
@@ -15,4 +13,13 @@ class Item(db.Model):
         "Pokemon",
         back_populates = "item"
     )
-    
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "imageUrl": self.image_url,
+            "happiness": self.happiness,
+            "name": self.name,
+            "price": self.price,
+            "pokemon": self.pokemon.to_dict_no_item()
+        }

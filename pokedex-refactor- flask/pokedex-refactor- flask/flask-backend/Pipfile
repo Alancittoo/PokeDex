@@ -12,6 +12,8 @@ flask-sqlalchemy = "*"
 sqlalchemy = "*"
 wtforms = "*"
 flask-wtf = "*"
+faker = "*"
+faker-commerce = "*"
 
 [dev-packages]
 

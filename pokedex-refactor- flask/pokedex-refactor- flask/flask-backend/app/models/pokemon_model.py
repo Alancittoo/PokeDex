@@ -1,6 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from .db import db
 
 UNKNOWN_IMG_URL = "/images/unknown.png"
 
@@ -23,11 +21,40 @@ class Pokemon(db.Model):
         back_populates = "pokemon",
     )
     
-    
-    
-    @staticmethod
-    def captured():
-        captured = this.getDataValue("captured")
-        if (captured):
-            return this.getDataValue("imageUrl")
-        return UNKNOWN_IMG_URL
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "number": self.number,
+            "attack": self.attack,
+            "defense": self.defense,
+            "imageUrl": self.image_url,
+            "name": self.name,
+            "type": self.type,
+            "moves": self.moves,
+            "encounterRate": self.encounter_rate,
+            "catchRate": self.catch_rate,
+            "captured": self.captured,
+            "item": [item.to_dict() for item in self.item]
+        } 
+        
+    def to_dict_no_item(self):
+        return {
+            "id": self.id,
+            "number": self.number,
+            "attack": self.attack,
+            "defense": self.defense,
+            "imageUrl": self.image_url,
+            "name": self.name,
+            "type": self.type,
+            "moves": self.moves,
+            "encounterRate": self.encounter_rate,
+            "catchRate": self.catch_rate,
+            "captured": self.captured,
+        }
+      
+    # @staticmethod
+    # def captured():
+    #     captured = this.getDataValue("captured")
+    #     if (captured):
+    #         return this.getDataValue("imageUrl")
+    #     return UNKNOWN_IMG_URL
