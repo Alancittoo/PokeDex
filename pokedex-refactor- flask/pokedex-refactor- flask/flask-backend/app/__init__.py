@@ -3,8 +3,8 @@ from flask import Flask
 from flask_migrate import Migrate
 from app.config import Configuration
 from .models import db
-from .routes.pokemon import pokemon
-from .routes.items import item ## import order routes
+from .routes.pokemon_routes import pokemon
+from .routes.items_routes import item ## import order routes
 
 app = Flask(__name__)
 app.config.from_object(Configuration)
